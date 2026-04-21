@@ -33,19 +33,48 @@ class UserDetailPage extends StatelessWidget {
             if (state is UserDetailLoaded) {
               final user = state.user;
 
-              return Padding(
+              return SingleChildScrollView(
                 padding: const EdgeInsets.all(16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    /// HEADER
                     Text(
                       user.name,
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 4),
                     Text('@${user.username}'),
                     const SizedBox(height: 16),
-                    Text('Email: ${user.email}'),
+
+                    /// CONTACT
+                    _sectionTitle(context, "Contact"),
+                    _infoTile(Icons.email, user.email),
+                    _infoTile(Icons.phone, user.phone),
+                    _infoTile(Icons.language, user.website),
+
+                    const SizedBox(height: 16),
+
+                    /// ADDRESS
+                    _sectionTitle(context, "Address"),
+                    _infoText('${user.address.street}, ${user.address.suite}'),
+                    _infoText(user.address.city),
+                    _infoText('ZIP: ${user.address.zipcode}'),
+
+                    const SizedBox(height: 16),
+
+                    /// GEO
+                    _sectionTitle(context, "Location"),
+                    _infoText('Lat: ${user.address.geo.lat}'),
+                    _infoText('Lng: ${user.address.geo.lng}'),
+
+                    const SizedBox(height: 16),
+
+                    /// COMPANY
+                    _sectionTitle(context, "Company"),
+                    _infoText(user.company.name),
+                    _infoText(user.company.catchPhrase),
+                    _infoText(user.company.bs),
                   ],
                 ),
               );
@@ -57,4 +86,33 @@ class UserDetailPage extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget _sectionTitle(BuildContext context, String title) {
+  return Padding(
+    padding: const EdgeInsets.only(bottom: 8),
+    child: Text(
+      title,
+      style: Theme.of(
+        context,
+      ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+    ),
+  );
+}
+
+Widget _infoText(String text) {
+  return Padding(padding: const EdgeInsets.only(bottom: 4), child: Text(text));
+}
+
+Widget _infoTile(IconData icon, String text) {
+  return Padding(
+    padding: const EdgeInsets.only(bottom: 4),
+    child: Row(
+      children: [
+        Icon(icon, size: 18),
+        const SizedBox(width: 8),
+        Expanded(child: Text(text)),
+      ],
+    ),
+  );
 }
