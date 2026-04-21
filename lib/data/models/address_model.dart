@@ -1,4 +1,4 @@
-import 'package:flutter_playground/features/home/domain/entities/geo_entity.dart';
+import 'package:flutter_playground/domain/entities/geo_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 import '../../domain/entities/address_entity.dart';
 import 'geo_model.dart';

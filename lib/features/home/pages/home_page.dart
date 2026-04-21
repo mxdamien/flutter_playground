@@ -6,7 +6,7 @@ import '../../../../core/controllers/theme_controller.dart';
 import '../../../../core/di/injection.dart';
 import '../../../../core/extensions/l10n_context_extension.dart';
 
-import '../../domain/usecases/get_users_usecase.dart';
+import '../../../../domain/usecases/get_users_usecase.dart';
 
 import '../bloc/home_bloc.dart';
 import '../bloc/home_event.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/user_entity.dart';
+import '../../../../domain/entities/user_entity.dart';
+import '../../user_detailpage/pages/userdetail_page.dart';
 import 'user_card.dart';
 
 class UserListView extends StatelessWidget {
@@ -14,7 +15,17 @@ class UserListView extends StatelessWidget {
       itemCount: users.length,
       itemBuilder: (context, index) {
         final user = users[index];
-        return UserCard(user: user);
+        return UserCard(
+          user: user,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => UserDetailPage(userId: user.id),
+              ),
+            );
+          },
+        );
       },
     );
   }

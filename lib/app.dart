@@ -7,7 +7,7 @@ import 'core/controllers/l10n_controller.dart';
 import 'core/controllers/theme_controller.dart';
 import 'core/theme/dark_theme.dart';
 import 'core/theme/light_theme.dart';
-import 'features/home/presentation/pages/home_page.dart';
+import 'features/home/pages/home_page.dart';
 import 'l10n/app_localizations.dart';
 
 class MyApp extends StatefulWidget {
